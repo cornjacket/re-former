@@ -1,6 +1,13 @@
 <h1>Edit</h1>
 <p>Edit existing user </p>
 
+<% if !@user.errors.empty? %>
+<%=  simple_format("Error(s) found in submission:") %>
+<%   @user.errors.full_messages.each do |message| %>
+<%=    simple_format(message) %>
+<%   end %>
+<%  end %>
+
 <%= form_for @user do |f| %>
   <%= f.label :username %><br />
   <%= f.text_field :username %><br>
